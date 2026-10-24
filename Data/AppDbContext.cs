@@ -83,6 +83,21 @@ public class AppDbContext : DbContext
     modelBuilder.Entity<Invoice>()
         .Property(i => i.InvoiceNumber)
         .HasMaxLength(30);
+
+    modelBuilder.Entity<Invoice>()
+        .Property(i => i.DiscountPercent)
+        .HasPrecision(5, 2)
+        .HasDefaultValue(0m);
+
+    modelBuilder.Entity<InvoiceItem>()
+        .Property(i => i.DiscountPercent)
+        .HasPrecision(5, 2)
+        .HasDefaultValue(0m);
+
+    modelBuilder.Entity<Invoice>()
+        .Property(i => i.RoundingDiscount)
+        .HasPrecision(18, 2)
+        .HasDefaultValue(0m);
 }
 }
 
